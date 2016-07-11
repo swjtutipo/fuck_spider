@@ -14,15 +14,10 @@ class Request(object):
     request by http
     """
     @classmethod
-    def request(cls, method, url, params={}, data={}, headers={}, timeout=3):
+    def request(cls, method, url, params=None, data=None, headers=None, timeout=3):
         """
-        :param method:
-        :param url:
-        :param params: query param
-        :param data: form data
-        :param headers:
-        :param timeout:
-        :return:
+        params: query param
+        data: form data
         """
         response = None
         try:
