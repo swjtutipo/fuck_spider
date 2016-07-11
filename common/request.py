@@ -14,15 +14,10 @@ class Request(object):
     request by http
     """
     @classmethod
-    def request(cls, method, url, params={}, data={}, headers={}, timeout=3):
+    def request(cls, method, url, params=None, data=None, headers=None, timeout=3):
         """
-        :param method:
-        :param url:
-        :param params: query param
-        :param data: form data
-        :param headers:
-        :param timeout:
-        :return:
+        params: query param
+        data: form data
         """
         response = None
         try:
@@ -45,7 +40,7 @@ class Request(object):
             logger.info('[RESPONSE TIME] url [{}], response time [{}]'.format(
                 url, time.time() - s_time
             ))
-            return response.text
+            return response
         except Exception as e:
             logger.error(
                 '[REQUEST ERROR] message [{}], method [{}], '
@@ -57,6 +52,6 @@ class Request(object):
         return response
 
 if __name__ == '__main__':
-    url = 'http://www.baidu.com'
+    url = 'http://pic.meizitu.com'
     result = Request.request('GET', url)
-    print result
+    print result.text
